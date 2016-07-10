@@ -58,9 +58,21 @@ class PlayerDetailsTableViewController: UITableViewController {
     // create a new Player instance with default values for game and rating. It does this only for a segue that has teh identifier of SavePlayerDetail
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         if segue.identifier == "SavePlayerDetail" {
             player = Player(name: nameTextField.text!, game: game, rating: 1)
         }
+        // the unwind segue goes back to the Players list
+        
+        /*
+         when we choose a game, return to the Add Player scene, then try to choose a game again, the game we chose before should have a checkmark by it. The solution is to pass the selected game stored in PlayerDetailsTableViewController over to the GamePickerTableViewController when we segue.
+         */
+        if segue.identifier == "PickGame" {
+            if let gamePickerTableViewController = segue.destinationViewController as? GamePickerTableViewController {
+                gamePickerTableViewController.selectedGame = game
+            }
+        }
+        // the show segue goes forwards to the Game Picker scene
     }
     
     @IBAction func unwindWithSelectedGame(segue: UIStoryboardSegue) {

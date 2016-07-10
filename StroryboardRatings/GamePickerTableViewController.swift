@@ -86,4 +86,22 @@ class GamePickerTableViewController: UITableViewController {
         cell?.accessoryType = .Checkmark
     }
 
+    /* 
+     the unwind segue method is performed before tableView(didSelectRowAtIndexPath), so that the selectedGameIndex is not updated in time.
+     we can override prepareForSegue(sender) and complete that operation before the unwind happens.
+     */
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SaveSelectedGame" {
+            if let cell = sender as? UITableViewCell {
+                let indexPath = tableView.indexPathForCell(cell)
+                if let index = indexPath?.row {
+                    selectedGame = games[index]
+                }
+            }
+        }
+        /*
+         the sender paramenter of prepareForSegue(sender) is the object that initiated the segue, which in this case was the game cell that was selected.
+         so we can use that cell's indexPath to locate the selected game in games then setselectedGame so that it is available in the unwind segue.
+         */
+    }
 }
