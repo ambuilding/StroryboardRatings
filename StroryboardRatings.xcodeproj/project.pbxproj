@@ -64,9 +64,9 @@
 		30A6A33D1D30E8F300FFF43E /* StroryboardRatings */ = {
 			isa = PBXGroup;
 			children = (
-				30B635CF1D324E0900242DE4 /* PlayerDetailsTableViewController.swift */,
 				30A6A3421D30E8F300FFF43E /* Main.storyboard */,
 				30B635D11D3253D300242DE4 /* GamePickerTableViewController.swift */,
+				30B635CF1D324E0900242DE4 /* PlayerDetailsTableViewController.swift */,
 				30A6A3501D30F29200FFF43E /* PlayersTableViewController.swift */,
 				30A6A3571D31032600FFF43E /* PlayerTableViewCell.swift */,
 				30A6A3521D30F31300FFF43E /* Player.swift */,
